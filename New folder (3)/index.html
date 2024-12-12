@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voting Eligibility</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Check Voting Eligibility</h2>
+        <label for="age">Enter your Age: </label>
+        <input type="number" id="age" oninput="checkEligibility()" placeholder="Enter age">
+        
+        <div id="message"></div>
+    </div>
+
+    <script>
+        function checkEligibility() {
+            const age = document.getElementById('age').value;
+            const messageElement = document.getElementById('message');
+            const ageNumber = parseInt(age);
+
+            //if-else ladder
+            if (ageNumber >= 18 && ageNumber <= 99) {
+                messageElement.textContent = "Eligible to vote!";
+                messageElement.className = 'eligible';
+            } else if (ageNumber < 18) {
+                messageElement.textContent = "You are under 18, not eligible to vote.";
+                messageElement.className = 'not-eligible';
+            } else if (ageNumber > 99) {
+                messageElement.textContent = "You have special consideration for voting.";
+                messageElement.className = 'special-consideration';
+            } else {
+                messageElement.textContent = "Please enter a valid age.";
+                messageElement.className = 'invalid';
+            }
+        }
+    </script>
+</body>
+</html>
+
